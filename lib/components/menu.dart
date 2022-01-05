@@ -44,16 +44,18 @@ Container Menu(BuildContext context) {
               ),
             ),
             _createItem(Icons.map, 'Carte', () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed('/');
             }),
-            _createItem(Icons.format_list_bulleted_rounded, 'Liste', () {}),
+            _createItem(Icons.format_list_bulleted_rounded, 'Liste', () {
+              Navigator.of(context).pushNamed('/liste');
+            }),
             _createItem(Icons.account_circle, 'Compte', () {}),
             _createItem(Icons.mail_outline_rounded, 'Nous contacter', () {}),
             _createItem(Icons.share, 'Partager l\'application', () {}),
             Divider(),
-            _createFooterItem("Politique de confidentialité", (){}),
-            _createFooterItem("Conditions d'utilisation", (){}),
-            _createFooterItem("Source d'information", (){}),
+            _createFooterItem("Politique de confidentialité", () {}),
+            _createFooterItem("Conditions d'utilisation", () {}),
+            _createFooterItem("Source d'information", () {}),
           ],
         ),
       )));
@@ -83,7 +85,6 @@ Widget _createFooterItem(String text, GestureTapCallback onTap) {
             style: GoogleFonts.poppins(
               textStyle: const TextStyle(color: Colors.white, fontSize: 15),
             )),
-        onTap: onTap
-    ),
+        onTap: onTap),
   );
 }
