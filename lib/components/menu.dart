@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,7 +9,7 @@ Container Menu(BuildContext context) {
       width: MediaQuery.of(context).size.width,
       child: Drawer(
           child: Container(
-        color: const Color(0xFF736bf5),
+        color: const Color(0xff2972ff),
         child: ListView(
           children: [
             Container(
@@ -27,18 +28,17 @@ Container Menu(BuildContext context) {
                     child: const Icon(
                       Icons.close,
                       size: 20.0,
-                      color: Color(0xFF736bf5),
+                      color: Color(0xff2972ff),
                     ),
                     padding: const EdgeInsets.all(16.0),
                     shape: const CircleBorder(),
                   ),
                   Text("Menu",
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white))),
+                      style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white)),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.25)
                 ],
               ),
@@ -49,9 +49,15 @@ Container Menu(BuildContext context) {
             _createItem(Icons.format_list_bulleted_rounded, 'Liste', () {
               Navigator.of(context).pushNamed('/liste');
             }),
-            _createItem(Icons.account_circle, 'Compte', () {}),
+            _createItem(Icons.account_circle, 'Compte', () {
+              Navigator.of(context).pushNamed('/compte');
+            }),
             _createItem(Icons.mail_outline_rounded, 'Nous contacter', () {}),
             _createItem(Icons.share, 'Partager l\'application', () {}),
+            _createItem(Icons.exit_to_app, 'Se déconnecter', () {
+              FirebaseAuth.instance.signOut();
+              Navigator.of(context).pushNamed('/login');
+            }),
             Divider(),
             _createFooterItem("Politique de confidentialité", () {}),
             _createFooterItem("Conditions d'utilisation", () {}),
@@ -68,9 +74,7 @@ Widget _createItem(IconData icon, String text, GestureTapCallback onTap) {
       leading: Icon(icon, color: Colors.white),
       title: Text(
         text,
-        style: GoogleFonts.poppins(
-          textStyle: const TextStyle(color: Colors.white, fontSize: 17),
-        ),
+        style: const TextStyle(color: Colors.white, fontSize: 17),
       ),
       onTap: onTap,
     ),
@@ -81,10 +85,10 @@ Widget _createFooterItem(String text, GestureTapCallback onTap) {
   return Padding(
     padding: EdgeInsets.only(left: 10),
     child: ListTile(
-        title: Text(text,
-            style: GoogleFonts.poppins(
-              textStyle: const TextStyle(color: Colors.white, fontSize: 15),
-            )),
+        title: Text(
+          text,
+          style: const TextStyle(color: Colors.white, fontSize: 15),
+        ),
         onTap: onTap),
   );
 }

@@ -1,8 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:projet_parking/pages/home/home.dart';
+import 'package:projet_parking/pages/account/account.dart';
+import 'package:projet_parking/MainPage.dart';
 import 'package:projet_parking/pages/listPage.dart';
+import 'package:projet_parking/pages/login/login.dart';
+import 'package:projet_parking/pages/register/register.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -16,9 +22,12 @@ class MyApp extends StatelessWidget {
           //   primarySwatch: Colors.blue,
           //   canvasColor: Colors.redAccent,
           ),
-      home: Home(),
+      home: MainPage(),
       routes: <String, WidgetBuilder>{
         '/liste': (BuildContext context) => new ListPage(),
+        '/compte': (BuildContext context) => new Account(),
+        '/register': (BuildContext context) => new Register(),
+        '/login': (BuildContext context) => new Login(),
       },
     );
   }
