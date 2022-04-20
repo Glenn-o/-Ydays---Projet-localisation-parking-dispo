@@ -1,8 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:projet_parking/components/app_bar.dart';
-import 'package:projet_parking/components/map.dart';
-import 'package:projet_parking/components/menu.dart';
 import 'package:projet_parking/pages/home/home.dart';
 import 'package:projet_parking/pages/login/login.dart';
 

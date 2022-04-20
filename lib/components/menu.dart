@@ -1,8 +1,6 @@
-import 'dart:ui';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:share_plus/share_plus.dart';
 
 Container Menu(BuildContext context) {
   return Container(
@@ -52,8 +50,13 @@ Container Menu(BuildContext context) {
             _createItem(Icons.account_circle, 'Compte', () {
               Navigator.of(context).pushNamed('/compte');
             }),
-            _createItem(Icons.mail_outline_rounded, 'Nous contacter', () {}),
-            _createItem(Icons.share, 'Partager l\'application', () {}),
+            _createItem(Icons.mail_outline_rounded, 'Nous contacter', () {
+              Navigator.of(context).pushNamed('/contact');
+            }),
+            _createItem(Icons.share, 'Partager l\'application', () {
+              Share.share(
+                  "https://apps.apple.com/us/app/facebook/id284882215?itsct=apps_box_link&itscg=30200");
+            }),
             _createItem(Icons.exit_to_app, 'Se déconnecter', () {
               FirebaseAuth.instance.signOut();
               Navigator.of(context).pushNamed('/login');

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:projet_parking/pages/account/account.dart';
 import 'package:projet_parking/MainPage.dart';
+import 'package:projet_parking/pages/contact/contact.dart';
 import 'package:projet_parking/pages/listPage.dart';
 import 'package:projet_parking/pages/login/login.dart';
 import 'package:projet_parking/pages/register/register.dart';
@@ -18,16 +19,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          //   primarySwatch: Colors.blue,
-          //   canvasColor: Colors.redAccent,
-          ),
       home: MainPage(),
       routes: <String, WidgetBuilder>{
         '/liste': (BuildContext context) => new ListPage(),
         '/compte': (BuildContext context) => new Account(),
         '/register': (BuildContext context) => new Register(),
         '/login': (BuildContext context) => new Login(),
+        '/contact': (BuildContext context) => new Contact(),
       },
     );
   }
